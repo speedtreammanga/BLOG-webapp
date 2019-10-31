@@ -1,0 +1,40 @@
+.DashboardCards {
+    &__card {
+      flex-direction: column;
+      position: relative;
+      height: 100%;
+      cursor: pointer;
+
+      .edit-tag.tag {
+        display: none;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+      }
+      &:hover {
+        .edit-tag.tag {
+          display: block;
+        }
+      }
+
+      .columns {
+        .column:first-child {
+            flex: 2;
+          }
+          .column:nth-child(2) {
+            flex: 1;
+            text-align: left;
+            padding: 0 0 0 1rem;
+            @media screen and (min-width: 769px) {
+                text-align: right;
+                padding-left: var(--columnGap);
+                padding-right: var(--columnGap);
+            }
+          }
+      } 
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+  
