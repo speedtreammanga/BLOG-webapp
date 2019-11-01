@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import axios from 'axios';
-import { BASE_URL } from "../config";
+import config from '../config';
 
 const authContext = createContext();
 
@@ -24,7 +24,7 @@ function useProvideAuth() {
   const signin = (email, password) => {
     return new Promise((resolve, reject) => {
       axios({
-        url: BASE_URL+'/user/login',
+        url: config.api+'/user/login',
         method: 'post',
         data: { email, password }
       })
@@ -43,7 +43,7 @@ function useProvideAuth() {
   const signup = (email, password) => {
     return new Promise((resolve, reject) => {
       axios({
-        url: BASE_URL+'/user/signup',
+        url: config.api+'/user/signup',
         method: 'post',
         data: { email, password }
       })
@@ -64,7 +64,7 @@ function useProvideAuth() {
       if (accessToken) {
         axios({
           method: 'get',
-          url: BASE_URL+'/user',
+          url: config.api+'/user',
           headers: {
             "authorization": accessToken
           }

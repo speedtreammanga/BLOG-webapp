@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { BASE_URL } from '../config';
+import config from '../config';
 
-const api = async opts => {
-	const { optsHeaders, url, method, params, data, ...restOpts} = opts
+const api = async options => {
+	const { optsHeaders, url, method, params, data, ...restOpts} = options
 	const access_token = localStorage.getItem('access_token');
 	const headers = access_token ? { 'authorization': access_token } : {};
 
-	const config = {
+	const opts = {
 		method: method || 'get',
-		url: BASE_URL + url,
+		url: config.api + url,
 		params,
 		data,
 		headers: {
@@ -18,7 +18,7 @@ const api = async opts => {
 		...restOpts,
 	}
 
-	const result = await axios(config);
+	const result = await axios(opts);
 	return result;
 }
 
