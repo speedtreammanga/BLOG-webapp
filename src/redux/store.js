@@ -1,4 +1,4 @@
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { fork, all } from 'redux-saga/effects';
 import { routerMiddleware } from 'react-router-redux';
